@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom'
-import { AlertTriangle, BarChart3, BookOpenCheck, Brain, CalendarCheck, BrainCircuit, ChevronLeft, ChevronRight, ClipboardList, LayoutDashboard, UploadCloud, UserCircle, Youtube } from 'lucide-react'
+import { AlertTriangle, BarChart3, BookOpenCheck, Brain, CalendarCheck, BrainCircuit, ChevronLeft, ChevronRight, ClipboardList, LayoutDashboard, UploadCloud, UserCircle, Youtube, Globe } from 'lucide-react'
 
 const navItems = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { path: '/doubt', icon: Brain, label: 'AI Doubt Solver' },
+  { path: '/chatbot', icon: Globe, label: 'Web Scraping Agent' },
   { path: '/upload', icon: UploadCloud, label: 'Upload Resources' },
   { path: '/youtube', icon: Youtube, label: 'YouTube Companion' },
   { path: '/quiz', icon: ClipboardList, label: 'Adaptive Quiz' },

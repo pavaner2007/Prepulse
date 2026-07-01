@@ -12,6 +12,7 @@ import StudyPlan from './pages/StudyPlan'
 import SyllabusStrategy from './pages/SyllabusStrategy'
 import ProgressAnalytics from './pages/ProgressAnalytics'
 import Profile from './pages/Profile'
+import Chatbot from './pages/Chatbot'
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth()
@@ -43,7 +44,7 @@ function App() {
           <Route path="analytics" element={<ProgressAnalytics />} />
           <Route path="profile" element={<Profile />} />
           <Route path="notes" element={<Navigate to="/upload" replace />} />
-          <Route path="chatbot" element={<Navigate to="/doubt" replace />} />
+          <Route path="chatbot" element={<Chatbot />} />
         </Route>
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>

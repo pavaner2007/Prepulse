@@ -110,7 +110,17 @@ function AIDoubtSolver() {
           </div>
 
           <Card title="Final Answer"><p>{answer.finalAnswer}</p></Card>
-          <Card title="Step-by-Step Explanation"><ol className="list-decimal pl-5 space-y-2">{(Array.isArray(answer.stepByStep) ? answer.stepByStep : [answer.stepByStep].filter(Boolean)).map((step, i) => <li key={i}>{step}</li>)}</ol></Card>
+           <Card title="Step-by-Step Explanation">
+            <ol className="list-decimal pl-5 space-y-2">
+              {(Array.isArray(answer.stepByStep) ? answer.stepByStep : [answer.stepByStep].filter(Boolean)).map((step, i) => (
+                <li key={i}>
+                  {typeof step === 'object' && step !== null 
+                    ? (step.text || step.step || step.description || JSON.stringify(step)) 
+                    : String(step)}
+                </li>
+              ))}
+            </ol>
+          </Card>
 
           <div className="grid md:grid-cols-2 gap-4">
             <Mini title="Concept Used" value={answer.conceptUsed} />

@@ -76,7 +76,19 @@ function Block({ title, children }) {
 
 function List({ items = [], empty = 'No items available.' }) {
   const list = Array.isArray(items) ? items : String(items || '').split('\n').filter(Boolean)
-  return list.length ? <ul className="space-y-2">{list.map((item, index) => <li key={index}>• {item}</li>)}</ul> : <p className="text-slate-500">{empty}</p>
+  return list.length ? (
+    <ul className="space-y-2">
+      {list.map((item, index) => (
+        <li key={index}>
+          • {typeof item === 'object' && item !== null 
+            ? (item.text || item.point || item.concept || item.title || JSON.stringify(item)) 
+            : String(item)}
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p className="text-slate-500">{empty}</p>
+  )
 }
 
 export default YouTubeCompanion

@@ -153,7 +153,11 @@ function ResourceSummaryModal({ resource, onClose }) {
                           {summaryData.keyPoints.map((point, index) => (
                             <li key={index} className="text-xs text-slate-700 flex items-start gap-2">
                               <span className="w-5 h-5 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center font-bold flex-shrink-0 text-[10px]">{index + 1}</span>
-                              <span className="leading-normal">{point}</span>
+                              <span className="leading-normal">
+                                {typeof point === 'object' && point !== null 
+                                  ? (point.text || point.point || point.concept || point.title || JSON.stringify(point)) 
+                                  : String(point)}
+                              </span>
                             </li>
                           ))}
                         </ul>
@@ -207,7 +211,13 @@ function ResourceSummaryModal({ resource, onClose }) {
                           <div className="mt-3 pt-3 border-t border-slate-100">
                             <p className="font-bold text-slate-900 text-xs mb-1.5">Step-by-step derivation:</p>
                             <ol className="list-decimal pl-4 text-xs space-y-1.5 text-slate-600">
-                              {msg.steps.map((step, sIdx) => <li key={sIdx}>{step}</li>)}
+                              {msg.steps.map((step, sIdx) => (
+                                <li key={sIdx}>
+                                  {typeof step === 'object' && step !== null 
+                                    ? (step.text || step.step || step.description || JSON.stringify(step)) 
+                                    : String(step)}
+                                </li>
+                              ))}
                             </ol>
                           </div>
                         )}

@@ -148,7 +148,7 @@ function ResourceSummaryModal({ resource, onClose }) {
                   <div className="space-y-5">
                     <div className="p-5 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl border border-indigo-100 space-y-4">
                       <h3 className="font-bold text-slate-900 text-sm">Key Concepts & Points</h3>
-                      {summaryData?.keyPoints && summaryData.keyPoints.length > 0 ? (
+                      {summaryData?.keyPoints && Array.isArray(summaryData.keyPoints) && summaryData.keyPoints.length > 0 ? (
                         <ul className="space-y-2.5">
                           {summaryData.keyPoints.map((point, index) => (
                             <li key={index} className="text-xs text-slate-700 flex items-start gap-2">
@@ -207,7 +207,7 @@ function ResourceSummaryModal({ resource, onClose }) {
                       }`}>
                         <p>{msg.text}</p>
                         
-                        {msg.steps && msg.steps.length > 0 && (
+                        {msg.steps && Array.isArray(msg.steps) && msg.steps.length > 0 && (
                           <div className="mt-3 pt-3 border-t border-slate-100">
                             <p className="font-bold text-slate-900 text-xs mb-1.5">Step-by-step derivation:</p>
                             <ol className="list-decimal pl-4 text-xs space-y-1.5 text-slate-600">
